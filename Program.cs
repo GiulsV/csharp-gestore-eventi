@@ -34,45 +34,72 @@ Le eccezioni possono essere generiche (Exception) o usate quelle già messe a di
 Vi ricordo che man mano che andrete avanti con le altre milestones, potrete aggiungere più avanti altri eventuali metodi (public e private) che vi aiutino a svolgere le funzioni richieste se ritenete necessari!
  */
 
-//MILESTONE 1
+/*
+ MILESTONE 2
+    1. Nel vostro programma principale Program.cs, chiedete all’utente di inserire un nuovo evento con tutti i parametri richiesti dal costruttore.
 
-Evento test = new Evento();
-Evento test2 = new Evento();
+    2. Dopo che l’evento è stato istanziato, chiedete all’utente se e quante prenotazioni vuole fare e provare ad effettuarle.
 
-try
-{
-    test = new Evento("test", DateTime.Parse("11/11/2022"), 5);
-}
-catch (ArgumentNullException)
-{
-    Console.WriteLine("Il titolo non può esser vuoto");
-}
+    3. Stampare a video il numero di posti prenotati e quelli disponibili.
 
-Console.WriteLine("TEST");
-Console.WriteLine(test.ToString());
+    4. Ora chiedere all’utente fintanto che lo desidera, se e quanti posti vuole disdire. Ogni volta che disdice dei posti, stampare i posti residui e quelli prenotati.
 
-try
-{
-    test.DisdiciPosti(5);
-}
-catch (ArgumentException e)
-{
-    Console.WriteLine(e.Message);
-}
+Attenzione: In questa prima fase non è necessario gestire le eventuali eccezioni da Program.cs che potrebbero insorgere, eventualmente il programma si blocca se qualcosa va storto che voi avevate già previsto.
+Piuttosto pensate bene alla logica del vostro programma principale e della vostra classe Evento pensando bene alle responsabilità dei metodi e alla visibilità di attributi e metodi.
+ */
 
-try
-{
-    test2 = new Evento("Test2", DateTime.Parse("11/12/2022"), 10);
-}
-catch (ArgumentNullException e)
-{
-    Console.WriteLine(e.Message);
-}
-catch (ArgumentException e)
-{
-    Console.WriteLine(e.Message);
-}
+//MILESTONE 2
 
-Console.WriteLine(" ");
-Console.WriteLine("TEST2");
-Console.WriteLine(test2.ToString());
+Console.WriteLine("Gestione Eventi");
+
+//1 - Novo evento
+Console.Write("Inserisci il nome dell'evento: ");
+
+string nome = Console.ReadLine();
+
+Console.Write("Inserisci la data dell'evento (gg/mm/yyyy): ");
+
+DateTime data = Convert.ToDateTime(Console.ReadLine());
+
+Console.Write("Inserisci il numero di posti totali: ");
+
+int posti = Convert.ToInt32(Console.ReadLine());
+
+try {
+    
+    Evento test = new Evento(nome, data, posti);
+
+    //2 - Pronotare posti
+    Console.Write("Quanti posti desideri prenotare? ");
+
+    int postiPrenotati = Convert.ToInt32(Console.ReadLine());
+
+    //3 - Stampa posti prenotati/rimanenti
+    test.PrenotaPosti(postiPrenotati);
+    Console.WriteLine(test.StampaPosti());
+
+    //4 - Disdetta
+    bool disdici = true;
+    do
+    {
+        Console.Write("Vuoi disdire dei posti? [ s ] o [ n ] ");
+        string disdetta = Console.ReadLine();
+        
+        if (disdetta == "s")
+        {
+            Console.Write("Indica il numero di posti da disdire: ");
+            int postiDisdetta = Convert.ToInt32(Console.ReadLine());
+            test.DisdiciPosti(postiDisdetta);
+            Console.WriteLine(test.StampaPosti());
+        }
+        else { 
+            Console.WriteLine("Ok, va bene!");
+            disdici = false;
+        }
+
+    } while (disdici);
+
+}catch (GestoreEventiException)
+{
+    Console.WriteLine(posti.ToString());
+}

@@ -139,9 +139,9 @@ public class Evento
     public string StampaPosti()
     {
         string stringa = " ";
-        stringa += "Numero di Posti Prenotati: " + this.postiPrenotati + ".";
-        stringa += "Numero di Posti Disponibili: " + (this.CapienzaMassima - this.postiPrenotati) + "";
-        stringa += " ";
+        stringa += "Numero di Posti Prenotati= " + this.postiPrenotati + "\n ";
+        stringa += "Numero di Posti Disponibili= " + (this.CapienzaMassima - this.postiPrenotati) + "\n";
+        stringa += "\n ";
 
         return stringa;
     }
