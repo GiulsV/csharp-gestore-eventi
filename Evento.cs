@@ -153,10 +153,10 @@ public class Evento
         return stringa;
     }
 
+    //stampa parole sbagliate
     public string RigaLista()
     {
-        return this.data.ToString("Titolo: " + titolo + "Data: " + ("dd/MM/yyyy") + " Posti Prenotati: " + this.postiPrenotati + " \n " +
-                                 " Capienza massima: " + this.CapienzaMassima);
+        return this.data.ToString("dd/MM/yyyy") + " - " + this.titolo;
     }
 
 }

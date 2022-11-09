@@ -135,28 +135,18 @@ Aggiungete poi i seguenti metodi:
 ProgrammaEventi programmaEventiTest = new ProgrammaEventi("TestEventi");
 
 Console.Write("Inserisci il nome dell'evento: ");
-
 string nome = Console.ReadLine();
-
 Console.Write("Inserisci la data dell'evento: ");
-
 DateTime data = Convert.ToDateTime(Console.ReadLine());
-
 Console.Write("Inserisci il numero di posti totali: ");
-
 int posti = Convert.ToInt32(Console.ReadLine());
-
 
 Evento eventoTest = new Evento(nome, data, posti);
 
 Console.Write("Quanti posti desideri prenotare? ");
-
 int postiPrenotati = Convert.ToInt32(Console.ReadLine());
-
 eventoTest.PrenotaPosti(postiPrenotati);
 Console.WriteLine(eventoTest.StampaPosti());
-
 programmaEventiTest.AggiungiEvento(eventoTest);
-
 Console.WriteLine("----------------------Test Stampa-------------------------");
 Console.WriteLine(eventoTest.RigaLista());
