@@ -37,9 +37,10 @@ public class Evento
 {
     private string titolo;
     private DateTime data;
-    private int capienzaMassima;
+    private int _capienzaMassima;
+    public int capienzaMassima;
 
-    protected int postiPrenotati;
+    public int postiPrenotati { get; private set; }
 
     public string Titolo
     {
@@ -75,7 +76,7 @@ public class Evento
         }
     }
 
-    protected int CapienzaMassima
+    public int CapienzaMassima
     {
         get
         {
@@ -143,8 +144,8 @@ public class Evento
 
     public override string ToString()
     {
-        string stringa = " Evento ";
-        stringa += this.data.ToString("dd/MM/yyyy") + " - " + this.titolo + " - " + this.postiPrenotati + " - " + this.CapienzaMassima + ".";
+        string stringa = "";
+        stringa += this.data.ToString("dd/MM/yyyy") + " - " + this.titolo + " - " + this.postiPrenotati + " - " + this.CapienzaMassima;
         return stringa;
     }
 
@@ -152,5 +153,4 @@ public class Evento
     {
         return this.data.ToString("dd/MM/yyyy") + " - " + this.titolo;
     }
-
 }

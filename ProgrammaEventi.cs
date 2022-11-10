@@ -1,7 +1,7 @@
 ﻿public class ProgrammaEventi
 {
     string Titolo;
-    List<Evento> eventi;
+    public List<Evento> eventi;
 
     public ProgrammaEventi(string titolo)
     {

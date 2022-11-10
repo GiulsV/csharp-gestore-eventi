@@ -167,7 +167,7 @@ Una volta compilati tutti gli eventi:
  */
 
 /*
- BONUS
+BONUS FILES
 Creare una classe Conferenza che estende Evento, che ha anche gli attributi:
     ● relatore: string
     ● prezzo: double
@@ -183,7 +183,8 @@ precedentemente creata, commentando il metodo svuota Lista di Eventi).
 A questo punto se provate a stampare la vostra lista di eventi con l’apposito metodo che avete fatto nella classe Evento, se lo avete fatto bene avvalendovi del ToString() per stampare gli eventi, noterete come il metodo ToString() di Evento e di Conferenza vengono correttamente chiamati a seconda che nel programma eventi ci sia un evento normale o una conferenza.
  */
 
-//MILESTONE 4 - BONUS
+//MILESTONE 4 + BONUS + BONUS FILES
+
 //nome programma eventi
 Console.Write("Inserisci il nome del tuo programma Eventi: ");
 string nomeProgrammaEventi = Console.ReadLine();
@@ -293,6 +294,19 @@ void CreaNuovaConferenza()
 Console.WriteLine("Evento: "+nomeProgrammaEventi);
 Console.WriteLine(programmaEventiUtente.ToString());
 
+//BONUS FILES
+Console.WriteLine("Vuoi salvare i dati in un file? ( si / no )");
+string salvaFile = Console.ReadLine();
+if (salvaFile == "si")
+{
+    Esporta.NuovaEsportazione(programmaEventiUtente.eventi);
+
+    Console.WriteLine("File creato.");
+}
+else {
+    Console.WriteLine("Ok,va bene!");
+}
+
 Console.WriteLine();
 Console.Write("Inserisci una data per sapere che eventi ci saranno (gg/mm/yyyy): ");
 DateTime data = Convert.ToDateTime(Console.ReadLine());
@@ -321,3 +335,4 @@ switch (svuotaLista)
     default:
         break;
 }
+

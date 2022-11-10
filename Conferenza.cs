@@ -20,14 +20,10 @@ public class Conferenza : Evento
 
     }
 
-    private string SetPrezzo(double prezzo)
+
+    public override string ToString()
     {
-        return Prezzo.ToString("0.00");
+        return base.ToString();
     }
 
-    private string SetDataOra(DateOnly data)
-    {
-        string dataOraString;
-        return dataOraString = data.ToString("yyyy-MM-dd hh:mm:ss");
-    }
 }
