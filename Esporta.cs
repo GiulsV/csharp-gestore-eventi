@@ -30,7 +30,6 @@ public static class Esporta
             foreach (Evento evento in eventi)
             {
                 string riga = evento.ToString();
-                riga = riga.Replace(',', '.');
                 riga = riga.Replace('-', ',');
                 if (evento.GetType().ToString() == " ")
                     riga += "";
