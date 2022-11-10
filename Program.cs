@@ -131,8 +131,8 @@ Aggiungete poi i seguenti metodi:
             data3 - titolo3
             …
  */
-
-ProgrammaEventi programmaEventiTest = new ProgrammaEventi("TestEventi");
+/*
+ ProgrammaEventi programmaEventiTest = new ProgrammaEventi("TestEventi");
 
 Console.Write("Inserisci il nome dell'evento: ");
 string nome = Console.ReadLine();
@@ -150,3 +150,108 @@ Console.WriteLine(eventoTest.StampaPosti());
 programmaEventiTest.AggiungiEvento(eventoTest);
 Console.WriteLine("----------------------Test Stampa-------------------------");
 Console.WriteLine(eventoTest.RigaLista());
+ */
+
+/*
+MILESTONE 4 
+
+ Una volta completata la classe ProgrammaEventi, usatela nel vostro programma principale Program.cs per creare un nuovo programma di Eventi che l’utente vuole organizzare, chiedendogli qual è il titolo del suo programma eventi. 
+Chiedete poi al vostro utente quanti eventi vuole aggiungere, e fategli inserire ad uno ad uno tutti gli eventi necessari chiedendo man mano tutte le informazioni richieste all’utente.
+Attenzione: qui si gestite eventuali eccezioni lanciate dagli eventi creati, in questo caso il programma informa l’utente dell’errore e non aggiunge l’evento al programma eventi (o meglio alla lista di Eventi del programmaEventi), ma comunque chiederà in continuazione all’utente di inserire eventi fintanto che non raggiunge il numero di eventi specificato inizialmente dall’utente.
+
+Una volta compilati tutti gli eventi:
+    1. Stampate il numero di eventi presenti nel vostro programma eventi
+    2. Stampate la lista di eventi inseriti nel vostro programma usando il metodo già fatto
+    3. Chiedere all’utente una data e stampate tutti gli eventi in quella data. Usate il metodo che vi restituisce una lista di eventi in una data dichiarata e create un metodo statico che si occupa di stampare una lista di eventi che gli arriva. Passate dunque la lista di eventi in data al metodo statico, per poterla stampare.
+    4. Eliminate tutti gli eventi dal vostro programma.
+ */
+
+
+//MILESTONE 4
+//nome programma eventi
+Console.Write("Inserisci il nome del tuo programma Eventi: ");
+string nomeProgrammaEventi = Console.ReadLine();
+
+ProgrammaEventi programmaEventiUtente = new ProgrammaEventi(nomeProgrammaEventi);
+
+//numero eventi in lista
+Console.Write("Inserisci il numero di eventi da inserire: ");
+int numeroEventi = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine();
+
+//crea nuovo evento per n volte
+for (int i = 0; i < numeroEventi; i++)
+{
+    try
+    {
+        CreaNuovoEvento();
+    }
+    catch (ArgumentNullException e)
+    {
+        Console.WriteLine(e.Message);
+        CreaNuovoEvento();
+    }
+    catch (ArgumentException e)
+    {
+        Console.WriteLine(e.Message);
+        CreaNuovoEvento();
+    }
+}
+
+//recap eventi
+Console.WriteLine("Il numero di eventi nel tuo programma: " + programmaEventiUtente.NumeroEventi() + "\n");
+Console.WriteLine();
+Console.WriteLine("Ecco il tuo programma Eventi: \n");
+Console.WriteLine(programmaEventiUtente.ToString());
+
+Console.WriteLine();
+Console.Write("Inserisci una data per sapere che eventi ci saranno (gg/mm/yyyy): ");
+DateTime data = Convert.ToDateTime(Console.ReadLine());
+Console.WriteLine(programmaEventiUtente.EventiData(data) + "\n");
+
+//4 - eliminare tutti gli eventi
+Console.Write("Vuoi svuotare la lista degli eventi (si/no)? ");
+string svuotaLista = Console.ReadLine();
+
+switch (svuotaLista)
+{
+    case "si":
+        programmaEventiUtente.SvuotaEventi();
+        Console.WriteLine();
+        Console.WriteLine("Ecco il tuo programma Eventi vuoto: \n");
+        Console.WriteLine(programmaEventiUtente.ToString());
+        break;
+
+    case "no":
+        Console.WriteLine();
+        Console.WriteLine("Ecco il tuo programma Eventi: \n");
+        Console.WriteLine(programmaEventiUtente.ToString());
+
+        break;
+
+    default:
+        break;
+}
+
+//CREA NUOVO EVENTO
+void CreaNuovoEvento()
+{
+    //nome
+    Console.WriteLine();
+    Console.Write("Inserisci il nome dell' evento: ");
+    string nome = Console.ReadLine();
+
+    //data
+    Console.Write("Inserisci la data dell'evento (gg/mm/yyyy): ");
+    DateTime data = Convert.ToDateTime(Console.ReadLine());
+
+    //posti
+    Console.Write("Inserisci il numero di posti totali: ");
+    int posti = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine();
+
+    //aggiungi evento
+    Evento nuovoEvento = new Evento(nome, data, posti);
+    programmaEventiUtente.AggiungiEvento(nuovoEvento);
+
+}
