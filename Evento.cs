@@ -52,7 +52,7 @@ public class Evento
         {
             if (value == "")
             {
-                throw new GestoreEventiException("Il titolo non può esser vuoto");
+                throw new ArgumentNullException("Il titolo non può esser vuoto");
             }
             else titolo = value;
         }
@@ -69,7 +69,7 @@ public class Evento
         {
             if (value < DateTime.Today)
             {
-                throw new GestoreEventiException("La data non può esser già passata.");
+                throw new ArgumentException("La data non può esser già passata.");
             }
             else data = value;
         }
@@ -86,7 +86,7 @@ public class Evento
         {
             if (value < 0)
             {
-                throw new GestoreEventiException("La capienza massimo deve esser un valore positivo");
+                throw new ArgumentException("La capienza massimo deve esser un valore positivo");
             }
             else capienzaMassima = value;
         }
@@ -113,18 +113,13 @@ public class Evento
         PostiPrenotati = 0;
     }
 
-    public Evento()
-    {
-  
-    }
-
     public void PrenotaPosti(int posti)
     {
         if (PostiPrenotati <= (CapienzaMassima - posti))
         {
             this.PostiPrenotati = PostiPrenotati + posti;
         }
-        else throw new GestoreEventiException("Non è possibile prenotare i posti, capienza massima raggiunta");
+        else throw new ArgumentException("Non è possibile prenotare i posti, capienza massima raggiunta");
     }
 
     public void DisdiciPosti(int posti)
@@ -133,12 +128,12 @@ public class Evento
         {
             this.PostiPrenotati = PostiPrenotati - posti;
         }
-        else throw new GestoreEventiException("Non è possibile disdire i posti");
+        else throw new ArgumentException("Non è possibile disdire i posti");
     }
 
     public string StampaPosti()
     {
-        string stringa = " ";
+        string stringa = " \n";
         stringa += "Numero di Posti Prenotati= " + this.postiPrenotati + "\n ";
         stringa += "Numero di Posti Disponibili= " + (this.CapienzaMassima - this.postiPrenotati) + "\n";
         stringa += "\n ";
@@ -153,7 +148,6 @@ public class Evento
         return stringa;
     }
 
-    //stampa parole sbagliate
     public string RigaLista()
     {
         return this.data.ToString("dd/MM/yyyy") + " - " + this.titolo;

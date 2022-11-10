@@ -10,15 +10,21 @@
     }
 
     // METODO 1
+        //add evento
     public void AggiungiEvento(Evento evento)
     {
         this.eventi.Add(evento);
+    }
+        //add conferenza
+    public void AggiungiConferenza(Conferenza conferenza)
+    {
+        this.eventi.Add(conferenza);
     }
 
     // METODO 2
     public string EventiData(DateTime dataRicerca)
     {
-        string stringa = "-------------------\n";
+        string stringa = "\n";
         foreach (Evento evento in eventi)
         {
             if (evento.Data.Date == dataRicerca.Date)
@@ -26,9 +32,7 @@
                 stringa += evento.RigaLista() + "\n";
             }
         }
-
-        stringa += "-------------------";
-
+        stringa += "\n";
         return stringa;
     }
 
@@ -42,7 +46,6 @@
             stringa += " " + "\n";
             stringa += evento.RigaLista() + "\n";
         }
-
         return stringa;
     }
 
@@ -61,15 +64,12 @@
     // METODO 6
     public override string ToString()
     {
-        string stringa = "------ " + this.Titolo + " ------\n";
+        string stringa = "Nome evento: " + this.Titolo + " \n";
         foreach (Evento evento in eventi)
         {
             stringa += evento.RigaLista() + "\n";
         }
-
-        stringa += "----------------------------------";
-
+        stringa += "\n ";
         return stringa;
     }
-
 }

@@ -166,8 +166,24 @@ Una volta compilati tutti gli eventi:
     4. Eliminate tutti gli eventi dal vostro programma.
  */
 
+/*
+ BONUS
+Creare una classe Conferenza che estende Evento, che ha anche gli attributi:
+    ● relatore: string
+    ● prezzo: double
 
-//MILESTONE 4
+Aggiungere questi attributi nel costruttore e implementarne getter e setter
+Aggiungere i metodi per restituire data e ora formattata e prezzo formattato (##,## euro). Per farlo vi suggerisco di usare il metodo prezzo.ToString("0.00").
+
+Fate l’override del metodo ToString() in modo che venga restituita una stringa del tipo: data - titolo - relatore - prezzo formattato.
+
+A questo punto provate ad aggiungere al vostro programma oltre che dei semplici eventi anche delle e vere e proprie conferenze (potete fare a meno di svuotare la lista
+precedentemente creata, commentando il metodo svuota Lista di Eventi).
+
+A questo punto se provate a stampare la vostra lista di eventi con l’apposito metodo che avete fatto nella classe Evento, se lo avete fatto bene avvalendovi del ToString() per stampare gli eventi, noterete come il metodo ToString() di Evento e di Conferenza vengono correttamente chiamati a seconda che nel programma eventi ci sia un evento normale o una conferenza.
+ */
+
+//MILESTONE 4 - BONUS
 //nome programma eventi
 Console.Write("Inserisci il nome del tuo programma Eventi: ");
 string nomeProgrammaEventi = Console.ReadLine();
@@ -204,6 +220,79 @@ Console.WriteLine();
 Console.WriteLine("Ecco il tuo programma Eventi: \n");
 Console.WriteLine(programmaEventiUtente.ToString());
 
+Console.WriteLine("----- BONUS ----");
+Console.WriteLine();
+Console.WriteLine("Aggiungiamo anche una conferenza!");
+
+try
+{
+    CreaNuovaConferenza();
+
+}
+catch (ArgumentNullException e)
+{
+    Console.WriteLine(e.Message);
+    CreaNuovaConferenza();
+}
+catch (ArgumentException e)
+{
+    Console.WriteLine(e.Message);
+    CreaNuovaConferenza();
+}
+
+
+//CREA NUOVO EVENTO
+void CreaNuovoEvento()
+{
+    //nome
+    Console.WriteLine();
+    Console.Write("Inserisci il nome dell' evento: ");
+    string nome = Console.ReadLine();
+
+    //data
+    Console.Write("Inserisci la data dell'evento (gg/mm/yyyy): ");
+    DateTime data = Convert.ToDateTime(Console.ReadLine());
+
+    //posti
+    Console.Write("Inserisci il numero di posti totali: ");
+    int posti = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine();
+
+    //aggiungi evento
+    Evento nuovoEvento = new Evento(nome, data, posti);
+    programmaEventiUtente.AggiungiEvento(nuovoEvento);
+
+}
+
+//Bonus
+void CreaNuovaConferenza()
+{
+    Console.WriteLine();
+
+    Console.Write("Inserisci il nome della conferenza: ");
+    string nome = Console.ReadLine();
+
+    Console.Write("Inserisci la data della conferenza (gg/mm/yyyy): ");
+    DateTime data = Convert.ToDateTime(Console.ReadLine());
+
+    Console.Write("Inserisci il numero di posti per la conferenza: ");
+    int posti = Convert.ToInt32(Console.ReadLine());
+
+    Console.Write("Inserisci il Relatore della conferenza: ");
+    string relatore = Console.ReadLine();
+
+    Console.Write("Inserisci il prezzo del biglietto della conferenza: ");
+    double prezzo = Convert.ToDouble(Console.ReadLine());
+
+    Console.WriteLine();
+    Conferenza nuovaConferenza = new Conferenza(nome, data, posti, relatore, prezzo);
+    programmaEventiUtente.AggiungiConferenza(nuovaConferenza);
+    Console.WriteLine(nuovaConferenza);
+}
+//stampa tutto
+Console.WriteLine("Evento: "+nomeProgrammaEventi);
+Console.WriteLine(programmaEventiUtente.ToString());
+
 Console.WriteLine();
 Console.Write("Inserisci una data per sapere che eventi ci saranno (gg/mm/yyyy): ");
 DateTime data = Convert.ToDateTime(Console.ReadLine());
@@ -231,27 +320,4 @@ switch (svuotaLista)
 
     default:
         break;
-}
-
-//CREA NUOVO EVENTO
-void CreaNuovoEvento()
-{
-    //nome
-    Console.WriteLine();
-    Console.Write("Inserisci il nome dell' evento: ");
-    string nome = Console.ReadLine();
-
-    //data
-    Console.Write("Inserisci la data dell'evento (gg/mm/yyyy): ");
-    DateTime data = Convert.ToDateTime(Console.ReadLine());
-
-    //posti
-    Console.Write("Inserisci il numero di posti totali: ");
-    int posti = Convert.ToInt32(Console.ReadLine());
-    Console.WriteLine();
-
-    //aggiungi evento
-    Evento nuovoEvento = new Evento(nome, data, posti);
-    programmaEventiUtente.AggiungiEvento(nuovoEvento);
-
 }
