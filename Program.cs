@@ -47,63 +47,6 @@ Vi ricordo che man mano che andrete avanti con le altre milestones, potrete aggi
 Attenzione: In questa prima fase non è necessario gestire le eventuali eccezioni da Program.cs che potrebbero insorgere, eventualmente il programma si blocca se qualcosa va storto che voi avevate già previsto.
 Piuttosto pensate bene alla logica del vostro programma principale e della vostra classe Evento pensando bene alle responsabilità dei metodi e alla visibilità di attributi e metodi.
  */
-/*
-//MILESTONE 2
-
-Console.WriteLine("Gestione Eventi");
-
-//1 - Nuovo evento
-Console.Write("Inserisci il nome dell'evento: ");
-
-string nome = Console.ReadLine();
-
-Console.Write("Inserisci la data dell'evento (gg/mm/yyyy): ");
-
-DateTime data = Convert.ToDateTime(Console.ReadLine());
-
-Console.Write("Inserisci il numero di posti totali: ");
-
-int posti = Convert.ToInt32(Console.ReadLine());
-
-try {
-    
-    Evento test = new Evento(nome, data, posti);
-
-    //2 - Pronotare posti
-    Console.Write("Quanti posti desideri prenotare? ");
-
-    int postiPrenotati = Convert.ToInt32(Console.ReadLine());
-
-    //3 - Stampa posti prenotati/rimanenti
-    test.PrenotaPosti(postiPrenotati);
-    Console.WriteLine(test.StampaPosti());
-
-    //4 - Disdetta
-    bool disdici = true;
-    do
-    {
-        Console.Write("Vuoi disdire dei posti? [ s ] o [ n ] ");
-        string disdetta = Console.ReadLine();
-        
-        if (disdetta == "s")
-        {
-            Console.Write("Indica il numero di posti da disdire: ");
-            int postiDisdetta = Convert.ToInt32(Console.ReadLine());
-            test.DisdiciPosti(postiDisdetta);
-            Console.WriteLine(test.StampaPosti());
-        }
-        else { 
-            Console.WriteLine("Ok, va bene!");
-            disdici = false;
-        }
-
-    } while (disdici);
-
-}catch (GestoreEventiException)
-{
-    Console.WriteLine(posti.ToString());
-}
-*/
 
 /*
  MILESTONE 3
@@ -131,26 +74,6 @@ Aggiungete poi i seguenti metodi:
             data3 - titolo3
             …
  */
-/*
- ProgrammaEventi programmaEventiTest = new ProgrammaEventi("TestEventi");
-
-Console.Write("Inserisci il nome dell'evento: ");
-string nome = Console.ReadLine();
-Console.Write("Inserisci la data dell'evento: ");
-DateTime data = Convert.ToDateTime(Console.ReadLine());
-Console.Write("Inserisci il numero di posti totali: ");
-int posti = Convert.ToInt32(Console.ReadLine());
-
-Evento eventoTest = new Evento(nome, data, posti);
-
-Console.Write("Quanti posti desideri prenotare? ");
-int postiPrenotati = Convert.ToInt32(Console.ReadLine());
-eventoTest.PrenotaPosti(postiPrenotati);
-Console.WriteLine(eventoTest.StampaPosti());
-programmaEventiTest.AggiungiEvento(eventoTest);
-Console.WriteLine("----------------------Test Stampa-------------------------");
-Console.WriteLine(eventoTest.RigaLista());
- */
 
 /*
 MILESTONE 4 
@@ -167,7 +90,7 @@ Una volta compilati tutti gli eventi:
  */
 
 /*
-BONUS FILES
+BONUS
 Creare una classe Conferenza che estende Evento, che ha anche gli attributi:
     ● relatore: string
     ● prezzo: double
@@ -182,6 +105,8 @@ precedentemente creata, commentando il metodo svuota Lista di Eventi).
 
 A questo punto se provate a stampare la vostra lista di eventi con l’apposito metodo che avete fatto nella classe Evento, se lo avete fatto bene avvalendovi del ToString() per stampare gli eventi, noterete come il metodo ToString() di Evento e di Conferenza vengono correttamente chiamati a seconda che nel programma eventi ci sia un evento normale o una conferenza.
  */
+
+//TODO: sistemare menu per aggiungere funzioni milestone precedenti
 
 //MILESTONE 4 + BONUS + BONUS FILES
 

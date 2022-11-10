@@ -21,9 +21,9 @@ public class Conferenza : Evento
     }
 
 
-    public override string ToString()
-    {
-        return base.ToString();
-    }
+    //public override string ToString()
+    //{
+    //    return base.ToString();
+    //}
 
 }

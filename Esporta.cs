@@ -1,5 +1,5 @@
 ﻿/*
-BONUS - 2 
+BONUS FILES
 
  Questa mattina abbiamo visto come lavorare (scrivere e leggere) i file attraverso c#. Come possiamo utilizzare questo strumento? Dato che stiamo costruendo un programma per la gestione di eventi aggiungiamo una funzionalità di Import/Export del programma di eventi (quello di milestone 3).
 Una volta che avete quindi terminato tutte le milestone e anche il BONUS, facciamo il BONUS FILES:
